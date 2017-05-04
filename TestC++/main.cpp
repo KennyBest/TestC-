@@ -145,8 +145,9 @@ void swap(int& a, int& b)
 
 void testHandleTime() {
     
-    // 当前系统时间  这里time_t就是long数据类型
+    // 系统的当前日历时间距1970.1.1的秒数  这里time_t就是long数据类型
     time_t currentTime = time(0);
+    
     // 将时间转化为字符串形式
     char *dt = ctime(&currentTime);
     
@@ -157,6 +158,7 @@ void testHandleTime() {
     tm *gmtm = gmtime(&currentTime);
     // 返回本地时间
     gmtm = localtime(&currentTime);
+    // 返回一个指向time的指针
     dt = asctime(gmtm);
     
 //    struct tm {
@@ -184,6 +186,32 @@ void testHandleTime() {
             << "yday : " << gmtm->tm_yday << '\n'
     << endl;
     
+}
+
+
+#pragma mark - Struct
+
+void testStruct() {
+    
+    struct Person {
+        char name[30];
+        int age;
+        char address[100];
+    } person1;
+
+    strcpy(person1.name, "xiaohong");
+    cout << person1.name << endl;
+    
+    
+    typedef struct {
+        char name[20];
+    } Book;
+    Book book = Book();
+    strcpy(book.name, "math");
+    // 指向结构的指针
+    Book *p = &book;
+    // 指向结构体的指针必须使用->来获取成员变量
+    cout << "Test name : " << p->name << endl;
 }
 
 int main(int argc, const char * argv[]) {
@@ -215,7 +243,9 @@ int main(int argc, const char * argv[]) {
     
 //    testQuote();
     
-    testHandleTime();
+//    testHandleTime();
+    
+    testStruct();
     return 0;
 }
 
