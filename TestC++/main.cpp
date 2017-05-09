@@ -8,6 +8,8 @@
 
 #include <iostream>
 #include <ctime> // C语言时间处理系统库
+#include "Person.hpp"
+
 using namespace std;
 
 double getAverage(double arr[], int size);
@@ -214,6 +216,33 @@ void testStruct() {
     cout << "Test name : " << p->name << endl;
 }
 
+
+#pragma mark - Person
+
+void testPerson() {
+//    Person p;
+//    p.m_name = "xiaohei";
+//    p.m_age = 18;
+//    p.m_address = "shanghai";
+//    
+//    cout << &p << p.m_name << endl;
+//    p.study();
+//    
+//    Person *p1 = &p;
+//    cout << p1->m_name << '\t' << p1->m_address << '\t' << endl;
+//    
+    
+    Person *p2 = new Person();
+    p2->m_name = "xiaohong";
+    p2->m_age = 18;
+    p2->m_address = "auto";
+    
+    cout << "name \t" << p2->m_name << endl;
+    
+    Person *p3 = new Person("sph", 18, "RedSea");
+    p3->write();
+}
+
 int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
@@ -245,7 +274,9 @@ int main(int argc, const char * argv[]) {
     
 //    testHandleTime();
     
-    testStruct();
+//    testStruct();
+    
+    testPerson();
     return 0;
 }
 
